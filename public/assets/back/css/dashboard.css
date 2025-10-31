@@ -1,0 +1,947 @@
+/* Enhanced E-Commerce Dashboard CSS - Conflict-Free Version */
+/* All styles are scoped under .dashboard-page-wrapper to avoid conflicts with azzara.min.css */
+
+/* Import Flaticon Font */
+@import url('../fonts/flaticon/flaticon.css');
+
+/* Dashboard Page Wrapper - Main Scope */
+.dashboard-page-wrapper {
+    /* This wrapper ensures all dashboard styles are scoped and don't affect other pages */
+    position: relative;
+}
+
+/* Enhanced Flaticon Icons - Scoped to Dashboard */
+.dashboard-page-wrapper [class^="flaticon-"], 
+.dashboard-page-wrapper [class*=" flaticon-"] {
+    font-family: "Flaticon" !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    line-height: 1 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    display: inline-block !important;
+    font-weight: normal !important;
+    color: inherit !important;
+    margin-left: 0 !important;
+}
+
+/* Dashboard Tab Buttons - Styled like in the image */
+.dashboard-page-wrapper .dashboard-tabs-container {
+    display: flex !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+.dashboard-page-wrapper .dashboard-tab-btn {
+    background: rgba(38, 230, 198, 0.274) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: rgb(12, 51, 158) !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+}
+
+.dashboard-page-wrapper .dashboard-tab-btn:hover {
+    background-image: linear-gradient(to top, #09203f 0%, #537895 100%)!important;
+    /* border-color: rgb(2, 5, 46) !important; */
+    color: white !important;
+    transform: translateY(-1px) !important;
+}
+
+.dashboard-page-wrapper .dashboard-tab-btn.active {
+  background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%)!important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+         
+}
+
+.dashboard-page-wrapper .dashboard-tab-btn i {
+    font-size: 12px !important;
+    margin-right: 6px !important;
+}
+
+/* Custom Range Date Picker Animations */
+.dashboard-page-wrapper #date-range-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform-origin: top !important;
+}
+
+.dashboard-page-wrapper #date-range-container.show {
+    display: block !important;
+    animation: slideDown 0.3s ease-out !important;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Quick Select Button Styles */
+.dashboard-page-wrapper .quick-select-btn {
+    transition: all 0.3s ease !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.dashboard-page-wrapper .quick-select-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+.dashboard-page-wrapper .quick-select-btn.active {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Tab Animation */
+.dashboard-page-wrapper .tab-fade-in {
+    animation: fadeInTab 0.3s ease-in-out !important;
+}
+
+@keyframes fadeInTab {
+    from {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Enhanced Card Icons - Scoped to Dashboard */
+.dashboard-page-wrapper .avatar-title i {
+    font-size: 2.5rem !important;
+    line-height: 1 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    transition: all 0.3s ease !important;
+    color: #fff !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 40% !important;
+    transform: translate(-50%, -50%) !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.dashboard-page-wrapper .avatar-md i {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    color: #fff !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 33% !important;
+    transform: translate(-50%, -50%) !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Icon hover effects */
+.dashboard-page-wrapper .hover-card:hover .avatar-title i {
+    transform: translate(-50%, -50%) scale(1.1) rotate(5deg) !important;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* Enhanced Clock Styling */
+.dashboard-page-wrapper .analog-clock {
+    width: 120px !important;
+    height: 120px !important;
+    position: relative !important;
+    margin: 0 auto !important;
+}
+
+.dashboard-page-wrapper #clockCanvas {
+    display: block !important;
+    margin: 0 auto !important;
+    background-color: #ffffff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* Digital Clock Styling */
+.dashboard-page-wrapper #current-time {
+    font-family: 'Courier New', monospace !important;
+    font-weight: 700 !important;
+    color: #ffc107 !important;
+    font-size: large !important;
+    padding-left: 10px !important;
+    text-shadow: 0 2px 10px rgba(255,193,7,0.5) !important;
+    letter-spacing: 2px !important;
+    animation: timeGlow 2s ease-in-out infinite alternate !important;
+}
+
+@keyframes timeGlow {
+    0% {
+        text-shadow: 0 2px 10px rgba(255,193,7,0.5);
+    }
+    100% {
+        text-shadow: 0 2px 20px rgba(255,193,7,0.8), 0 0 30px rgba(255,193,7,0.3);
+    }
+}
+
+.dashboard-page-wrapper #current-date {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+}
+
+/* Enhanced Card Hover Effects - Scoped to Dashboard */
+.dashboard-page-wrapper .hover-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    border-radius: 15px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.dashboard-page-wrapper .hover-card:hover {
+    transform: translateY(-12px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25) !important;
+}
+
+/* Gradient Card Styles - Scoped to Dashboard */
+.dashboard-page-wrapper .gradient-card-1 {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #3498db !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-2 {
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #9b59b6 !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-3 {
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #3498db !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-4 {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #2ecc71 !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-5 {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #e74c3c !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-6 {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #f39c12 !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-7 {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #9b59b6 !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-8 {
+    background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%) !important;
+    position: relative !important;
+    /* border-left: 5px solid #1abc9c !important; */
+}
+
+.dashboard-page-wrapper .gradient-card-earning {
+    background: linear-gradient(to right, #300f89, #78130ed1) !important;
+}
+
+.dashboard-page-wrapper .gradient-card-sales {
+    background: linear-gradient(135deg, #011810 0%, #148108 100%)  !important;
+}
+
+.dashboard-page-wrapper .gradient-card-reviews {
+    background: linear-gradient(135deg, #bd1818 0%, #ed9e09 100%) !important;
+}
+
+.dashboard-page-wrapper .gradient-card-subscribers {
+    background: linear-gradient(135deg,  #0530c9 0%, #07faee 100%) !important;
+}
+
+.dashboard-page-wrapper .gradient-card-recent {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Chart Cards - Scoped to Dashboard */
+.dashboard-page-wrapper .gradient-card-chart1 {
+    background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .gradient-card-chart2 {
+    background: linear-gradient(135deg, #d35400 0%, #e67e22 100%) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .gradient-card-chart3 {
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .gradient-card-chart4 {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%) !important;
+    position: relative !important;
+}
+
+/* Avatar Styling - Scoped to Dashboard */
+.dashboard-page-wrapper .avatar-lg {
+    height: 4.5rem !important;
+    width: 4.5rem !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .avatar-md {
+    height: 3.5rem !important;
+    width: 3.5rem !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .avatar-title {
+    height: 100% !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    position: relative !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+/* Font Sizes - Scoped to Dashboard */
+.dashboard-page-wrapper .font-size-28 {
+    font-size: 28px !important;
+}
+
+.dashboard-page-wrapper .font-size-24 {
+    font-size: 24px !important;
+}
+
+.dashboard-page-wrapper .font-size-13 {
+    font-size: 13px !important;
+}
+
+.dashboard-page-wrapper .font-size-12 {
+    font-size: 12px !important;
+}
+
+.dashboard-page-wrapper .font-size-11 {
+    font-size: 11px !important;
+}
+
+.dashboard-page-wrapper .font-size-48 {
+    font-size: 48px !important;
+}
+
+/* Border styling - Scoped to Dashboard */
+.dashboard-page-wrapper .for_borders {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.404) !important;
+}
+
+/* Text opacity helpers - Scoped to Dashboard */
+.dashboard-page-wrapper .text-white-50 {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+/* Background opacity helpers - Scoped to Dashboard */
+.dashboard-page-wrapper .bg-opacity-20 {
+    --bs-bg-opacity: 0.2 !important;
+}
+
+/* Enhanced Calendar Styles with Modern UX */
+.dashboard-page-wrapper #calendar-widget {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    position: relative !important;
+}
+
+/* Calendar Header Enhancement */
+.dashboard-page-wrapper .calendar-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px !important;
+    padding-top: 30px !important;
+    background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+.dashboard-page-wrapper .calendar-month-year {
+    text-align: center !important;
+    flex: 1 !important;
+}
+
+.dashboard-page-wrapper .calendar-title {
+    color: white !important;
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+}
+
+.dashboard-page-wrapper .calendar-subtitle {
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 0.8rem !important;
+}
+
+.dashboard-page-wrapper .calendar-nav-btn {
+    background: rgba(255,255,255,0.2) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    color: white !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.dashboard-page-wrapper .calendar-nav-btn:hover {
+    background: rgba(255,255,255,0.3) !important;
+    transform: scale(1.1) !important;
+    color: white !important;
+}
+
+.dashboard-page-wrapper .calendar-nav-btn:active {
+    transform: scale(0.95) !important;
+}
+
+/* Calendar Controls */
+.dashboard-page-wrapper .calendar-controls {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 15px !important;
+    background: rgba(255,255,255,0.05) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 15px 20px !important;
+}
+
+.dashboard-page-wrapper .calendar-control-btn {
+    background: rgba(255,255,255,0.15) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    color: white !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+.dashboard-page-wrapper .calendar-control-btn:hover {
+    background: rgba(255,255,255,0.25) !important;
+    transform: translateY(-2px) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* Calendar Grid Enhanced */
+.dashboard-page-wrapper .calendar-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 1px !important;
+    background: rgba(255,255,255,0.1) !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.dashboard-page-wrapper .calendar-day-header {
+    background: rgba(255,255,255,0.2) !important;
+    color: white !important;
+    text-align: center !important;
+    padding: 12px 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.5px !important;
+}
+
+.dashboard-page-wrapper .calendar-day-header.weekend-header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    border: 2px solid rgba(255,107,107,0.6) !important;
+    box-shadow: 0 2px 10px rgba(255,107,107,0.4) !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .calendar-day-header.weekend-header::after {
+    content: '🎉' !important;
+    position: absolute !important;
+    top: -5px !important;
+    right: 2px !important;
+    font-size: 10px !important;
+    opacity: 0.7 !important;
+}
+
+.dashboard-page-wrapper .calendar-day {
+    background: rgba(255,255,255,0.9) !important;
+    color: #333 !important;
+    text-align: center !important;
+    padding: 12px 8px !important;
+    min-height: 45px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: 500 !important;
+}
+
+.dashboard-page-wrapper .calendar-day:hover {
+    background: rgba(255,255,255,1) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    z-index: 10 !important;
+}
+
+.dashboard-page-wrapper .calendar-day.today {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    color: white !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.4) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .calendar-day.today:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
+    transform: scale(1.1) !important;
+}
+
+.dashboard-page-wrapper .calendar-day.selected {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+    color: white !important;
+    font-weight: bold !important;
+    box-shadow: 0 4px 15px rgba(40,167,69,0.4) !important;
+}
+
+.dashboard-page-wrapper .calendar-day.weekend {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    color: white !important;
+    font-weight: 700 !important;
+    border: 2px solid rgba(255,107,107,0.5) !important;
+    box-shadow: 0 2px 8px rgba(255,107,107,0.3) !important;
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .calendar-day.weekend:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #d63031 100%) !important;
+    color: white !important;
+    transform: scale(1.08) !important;
+    border-color: #ff5252 !important;
+    box-shadow: 0 4px 20px rgba(255,107,107,0.5) !important;
+}
+
+.dashboard-page-wrapper .calendar-day.weekend.today {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%) !important;
+    color: white !important;
+    border-color: #fd79a8 !important;
+    box-shadow: 0 4px 20px rgba(253,121,168,0.6) !important;
+    animation: weekendTodayPulse 2s infinite !important;
+}
+
+.dashboard-page-wrapper .calendar-day.weekend.selected {
+    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%) !important;
+    color: white !important;
+    border-color: #fdcb6e !important;
+    box-shadow: 0 4px 20px rgba(253,203,110,0.6) !important;
+}
+
+/* Weekend special effects */
+.dashboard-page-wrapper .calendar-day.weekend::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%) !important;
+    background-size: 10px 10px !important;
+    pointer-events: none !important;
+}
+
+/* Weekend animation */
+@keyframes weekendTodayPulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(253,121,168,0.6);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 6px 30px rgba(253,121,168,0.8);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(253,121,168,0.6);
+        transform: scale(1);
+    }
+}
+
+.dashboard-page-wrapper .calendar-day.other-month {
+    color: #adb5bd !important;
+    background: rgba(255,255,255,0.5) !important;
+}
+
+.dashboard-page-wrapper .calendar-day.other-month:hover {
+    background: rgba(255,255,255,0.7) !important;
+    color: #6c757d !important;
+}
+
+.dashboard-page-wrapper .calendar-day.has-event {
+    border-left: 4px solid #17a2b8 !important;
+}
+
+.dashboard-page-wrapper .calendar-day.has-event.today {
+    border-left: 4px solid #ffc107 !important;
+}
+
+/* Event Indicators */
+.dashboard-page-wrapper .event-indicator {
+    position: absolute !important;
+    top: 3px !important;
+    right: 3px !important;
+    width: 6px !important;
+    height: 6px !important;
+    background: #dc3545 !important;
+    border-radius: 50% !important;
+    animation: pulse 2s infinite !important;
+}
+
+.dashboard-page-wrapper .today-indicator {
+    position: absolute !important;
+    bottom: 3px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 4px !important;
+    height: 4px !important;
+    background: #ffc107 !important;
+    border-radius: 50% !important;
+}
+
+/* Calendar Footer */
+.dashboard-page-wrapper .calendar-footer {
+    padding: 15px 20px !important;
+    padding-bottom: 40px !important;
+    background: rgba(255,255,255,0.1) !important;
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+.dashboard-page-wrapper .selected-date-info {
+    color: white !important;
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+}
+
+/* Animation Classes */
+.dashboard-page-wrapper .calendar-updated {
+    animation: calendarFadeIn 0.3s ease !important;
+}
+
+.dashboard-page-wrapper .month-transition {
+    animation: monthSlide 0.3s ease !important;
+}
+
+.dashboard-page-wrapper .date-selected-animation {
+    animation: dateSelect 0.6s ease !important;
+}
+
+/* Calendar Notifications */
+.dashboard-page-wrapper .calendar-notification {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: rgba(0,0,0,0.8) !important;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 20px !important;
+    font-size: 0.8rem !important;
+    opacity: 0 !important;
+    transform: translateX(100px) !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000 !important;
+}
+
+.dashboard-page-wrapper .calendar-notification.show {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.dashboard-page-wrapper .calendar-notification.success {
+    background: rgba(40,167,69,0.9) !important;
+}
+
+.dashboard-page-wrapper .calendar-notification.info {
+    background: rgba(23,162,184,0.9) !important;
+}
+
+/* Calendar Animations */
+@keyframes calendarFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes monthSlide {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes dateSelect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Chart Canvas Styles - Scoped to Dashboard */
+.dashboard-page-wrapper .gradient-card-chart1 canvas,
+.dashboard-page-wrapper .gradient-card-chart2 canvas,
+.dashboard-page-wrapper .gradient-card-chart3 canvas,
+.dashboard-page-wrapper .gradient-card-chart4 canvas {
+    max-height: 200px !important;
+    width: 100% !important;
+}
+
+/* Responsive Design - Scoped to Dashboard */
+@media (max-width: 768px) {
+    .dashboard-page-wrapper .dashboard-tab-btn {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .dashboard-page-wrapper .avatar-lg {
+        height: 4rem !important;
+        width: 4rem !important;
+    }
+    
+    .dashboard-page-wrapper .font-size-28 {
+        font-size: 24px !important;
+    }
+    
+    .dashboard-page-wrapper #clockCanvas {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-page-wrapper .dashboard-tab-btn {
+        padding: 4px 8px !important;
+        font-size: 11px !important;
+    }
+    
+    .dashboard-page-wrapper .avatar-lg {
+        height: 3.5rem !important;
+        width: 3.5rem !important;
+    }
+}
+
+/* Enhanced Dashboard Animations and Loading States */
+.dashboard-page-wrapper .updating {
+    position: relative !important;
+    opacity: 0.7 !important;
+    transform: scale(0.98) !important;
+    transition: all 0.3s ease !important;
+}
+
+.dashboard-page-wrapper .updated {
+    transform: scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.2) !important;
+    transition: all 0.3s ease !important;
+}
+
+.dashboard-page-wrapper .updating::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    animation: shimmer 1.5s infinite !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Chart Loading Animation */
+.dashboard-page-wrapper .chart-loading {
+    position: relative !important;
+}
+
+.dashboard-page-wrapper .chart-updated {
+    animation: chartPulse 0.5s ease !important;
+}
+
+@keyframes chartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Recent Orders Row Animation */
+.dashboard-page-wrapper .order-row-animation {
+    animation: slideInRow 0.5s ease forwards !important;
+}
+
+@keyframes slideInRow {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Dashboard Notification Styles */
+.dashboard-notification {
+    animation: slideInNotification 0.3s ease forwards !important;
+}
+
+@keyframes slideInNotification {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Loading Spinner Styles */
+.dashboard-page-wrapper .loading-spinner {
+    animation: fadeInSpinner 0.3s ease !important;
+}
+
+@keyframes fadeInSpinner {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Tab Transition Animation */
+.dashboard-page-wrapper .tab-fade-in {
+    animation: tabFadeIn 0.3s ease !important;
+}
+
+@keyframes tabFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disable Button Animation */
+.dashboard-page-wrapper .dashboard-tab-btn:disabled {
+    cursor: not-allowed !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Enhanced Card Hover Effects */
+.dashboard-page-wrapper .hover-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.dashboard-page-wrapper .hover-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Success State for Cards */
+.dashboard-page-wrapper .hover-card.updated {
+    border: 1px solid rgba(0, 255, 0, 0.3) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1) !important;
+}
+
+/* Error State for Failed Updates */
+.dashboard-page-wrapper .hover-card.error {
+    border: 1px solid rgba(255, 0, 0, 0.3) !important;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.1) !important;
+}
+
+/* Loading State for Date Range Container */
+.dashboard-page-wrapper #date-range-container.show {
+    animation: slideDownContainer 0.3s ease forwards !important;
+}
+
+@keyframes slideDownContainer {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+    }
+}
