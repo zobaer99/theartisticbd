@@ -2,6 +2,41 @@
 
 A high-performance single-vendor e-commerce platform built with Laravel, featuring advanced caching, optimization, and professional invoice printing.
 
+## 🔧 Server Management & Troubleshooting
+
+This repository includes comprehensive SSH server access and troubleshooting tools:
+
+### Quick Start - Fix Forbidden Errors
+```bash
+# On Windows: Double-click
+connect-server.bat
+
+# On Linux/Mac/Git Bash:
+bash server-manager.sh
+```
+
+### Available Tools
+- **server-manager.sh** - Master control script for all operations
+- **connect-server.bat** - Windows SSH connection tool with interactive menu
+- **server-connect-and-fix.sh** - Unix/Linux SSH connection and fix tool
+- **fix-forbidden.sh** - Automated permission and cache fixes
+- **server-health-check.sh** - Comprehensive health diagnostics (35+ checks)
+- **server-diagnostic.sh** - Quick diagnostic tool
+
+### Server Details
+- **IP**: 217.196.54.155
+- **Port**: 65002
+- **Username**: u448576780
+
+### Documentation
+- **SSH-IMPLEMENTATION-GUIDE.txt** - Complete implementation and usage guide
+- **README-FIX-FORBIDDEN.txt** - Comprehensive forbidden error troubleshooting
+- **QUICK-FIX-GUIDE.txt** - Fast reference for common fixes
+- **CONNECT_TO_SERVER.txt** - Connection instructions
+- **SERVER_SETUP_COMMANDS.txt** - Manual command reference
+
+For complete server troubleshooting guide, see [SSH-IMPLEMENTATION-GUIDE.txt](./SSH-IMPLEMENTATION-GUIDE.txt)
+
 ## 🚀 Key Features
 
 ### Smart Cache Management System

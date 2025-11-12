@@ -1,0 +1,124 @@
+========================================================================
+STEP-BY-STEP: FIX FORBIDDEN ERROR ON YOUR SERVER
+========================================================================
+
+YOUR SERVER DETAILS:
+--------------------
+IP: 217.196.54.155
+Port: 65002
+Username: u448576780
+Password: [You have this]
+
+========================================================================
+STEP 1: CONNECT TO YOUR SERVER
+========================================================================
+
+Open PowerShell or Command Prompt and run:
+
+ssh -p 65002 u448576780@217.196.54.155
+
+Enter your password when prompted.
+
+========================================================================
+STEP 2: FIND YOUR LARAVEL PROJECT
+========================================================================
+
+Try these commands to find your project:
+
+cd ~/public_html
+ls -la
+
+If you don't see "artisan" file, try:
+
+cd ~/domains/theartisticbd.com/public_html
+ls -la
+
+Or:
+
+cd /home/u448576780/public_html
+ls -la
+
+Once you see "artisan", you're in the right place!
+
+========================================================================
+STEP 3: FIX PERMISSIONS (COPY AND PASTE THIS)
+========================================================================
+
+chmod -R 775 storage bootstrap/cache
+
+========================================================================
+STEP 4: CLEAR CACHES (COPY AND PASTE THIS)
+========================================================================
+
+php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan storage:link
+
+========================================================================
+STEP 5: CHECK .env FILE
+========================================================================
+
+cat .env
+
+Make sure you see:
+APP_ENV=production
+APP_DEBUG=false
+
+If .env doesn't exist:
+
+cp .env.example .env
+nano .env
+
+Then set these values and save (Ctrl+X, Y, Enter)
+
+========================================================================
+STEP 6: TEST
+========================================================================
+
+Go to your browser:
+https://theartisticbd.com/admin/setting/system
+
+Try to update settings - it should work now!
+
+========================================================================
+IF STILL FORBIDDEN - CHECK DEMO MODE
+========================================================================
+
+cat config/services.php | grep -A 3 "demo"
+
+If it shows 'enabled' => true, change it:
+
+nano config/services.php
+
+Find the 'demo' section and change to:
+
+'demo' => [
+    'enabled' => false,
+],
+
+Save (Ctrl+X, Y, Enter)
+
+Then run:
+php artisan config:clear
+
+========================================================================
+IF YOU STILL GET ERRORS - VIEW LOGS
+========================================================================
+
+tail -n 100 storage/logs/laravel.log
+
+This will show you the exact error.
+
+========================================================================
+QUICK REFERENCE - ALL COMMANDS IN ONE
+========================================================================
+
+# After connecting via SSH and navigating to your project:
+
+chmod -R 775 storage bootstrap/cache && \
+php artisan config:clear && \
+php artisan cache:clear && \
+php artisan route:clear && \
+php artisan view:clear && \
+php artisan storage:link && \
+echo "Done! Test your settings page now."
+
+========================================================================

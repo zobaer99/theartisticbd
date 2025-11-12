@@ -1,0 +1,99 @@
+====================================
+SERVER SETUP COMMANDS - FORBIDDEN FIX
+====================================
+
+1. SSH INTO YOUR SERVER
+   ssh username@theartisticbd.com
+
+2. NAVIGATE TO PROJECT DIRECTORY
+   cd /home/username/public_html
+   (or wherever your Laravel project is located)
+
+3. FIX FILE PERMISSIONS
+   chmod -R 775 storage
+   chmod -R 775 bootstrap/cache
+   chmod -R 755 public
+   
+   # If you have sudo access:
+   sudo chown -R www-data:www-data storage
+   sudo chown -R www-data:www-data bootstrap/cache
+   
+   # Or use your hosting user (common for cPanel):
+   chown -R username:username storage
+   chown -R username:username bootstrap/cache
+
+4. CREATE/UPDATE .env FILE
+   nano .env
+   
+   Make sure these lines exist:
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://theartisticbd.com
+   
+   Save and exit (Ctrl+X, then Y, then Enter)
+
+5. CLEAR ALL CACHES
+   php artisan config:clear
+   php artisan cache:clear
+   php artisan route:clear
+   php artisan view:clear
+   php artisan optimize
+
+6. CHECK DEMO MODE IN config/services.php
+   nano config/services.php
+   
+   Make sure it says:
+   'demo' => [
+       'enabled' => false,
+   ],
+
+7. IF STILL FORBIDDEN - ADD ROOT .htaccess
+   nano .htaccess
+   
+   Add this content:
+   <IfModule mod_security.c>
+       SecFilterEngine Off
+       SecFilterScanPOST Off
+   </IfModule>
+   
+   <IfModule mod_rewrite.c>
+       RewriteEngine On
+       RewriteRule ^(.*)$ public/$1 [L]
+   </IfModule>
+
+8. RESTART PHP-FPM (if you have access)
+   sudo systemctl restart php8.1-fpm
+   # or
+   sudo service php-fpm restart
+
+9. CHECK ERROR LOGS
+   tail -f storage/logs/laravel.log
+   # or check your hosting control panel error logs
+
+====================================
+CPANEL ALTERNATIVE COMMANDS
+====================================
+
+If you're using cPanel and can't SSH:
+
+1. Use File Manager in cPanel
+2. Navigate to your Laravel root directory
+3. Right-click on 'storage' folder → Change Permissions → Set to 775
+4. Right-click on 'bootstrap/cache' → Change Permissions → Set to 775
+5. Check if .env file exists, if not, upload it from your local
+6. Use Terminal in cPanel (if available) to run:
+   php artisan config:clear
+   php artisan cache:clear
+
+====================================
+CONTACT YOUR HOSTING PROVIDER IF:
+====================================
+
+- You cannot change permissions
+- ModSecurity is blocking requests
+- You need to whitelist specific POST requests
+- PHP-FPM or Apache needs configuration changes
+
+Tell them: "POST requests to /admin/setting/update are being blocked 
+with 403 Forbidden error. Please check ModSecurity rules and PHP 
+restrictions."
