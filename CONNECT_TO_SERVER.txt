@@ -1,0 +1,217 @@
+====================================
+CONNECT TO YOUR SERVER AND FIX FORBIDDEN ERROR
+====================================
+
+SERVER DETAILS:
+IP: 217.196.54.155
+Port: 65002
+Username: u448576780
+
+====================================
+STEP 1: CONNECT TO SERVER VIA SSH
+====================================
+
+Option A - Using Windows PowerShell:
+ssh -p 65002 u448576780@217.196.54.155
+
+Option B - Using PuTTY (Windows):
+1. Download PuTTY from https://www.putty.org/
+2. Open PuTTY
+3. In "Host Name": 217.196.54.155
+4. In "Port": 65002
+5. Click "Open"
+6. Login with username: u448576780
+7. Enter your password
+
+Option C - Using Windows Terminal or Command Prompt:
+ssh -p 65002 u448576780@217.196.54.155
+
+====================================
+STEP 2: NAVIGATE TO YOUR PROJECT
+====================================
+
+After connecting, find your Laravel project:
+
+# Try these common locations:
+cd ~/public_html
+# or
+cd ~/domains/theartisticbd.com/public_html
+# or
+cd /home/u448576780/public_html
+# or
+cd /home/u448576780/domains/theartisticbd.com/public_html
+
+# Verify you're in the right directory:
+ls -la
+# You should see: artisan, composer.json, app/, public/, etc.
+
+====================================
+STEP 3: FIX FILE PERMISSIONS
+====================================
+
+# Set correct permissions for storage:
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+
+# If you get permission denied, try with sudo:
+sudo chmod -R 775 storage
+sudo chmod -R 775 bootstrap/cache
+
+# Set ownership (if needed):
+chown -R u448576780:u448576780 storage
+chown -R u448576780:u448576780 bootstrap/cache
+
+====================================
+STEP 4: CHECK/CREATE .env FILE
+====================================
+
+# Check if .env exists:
+ls -la .env
+
+# If it doesn't exist, create it from example:
+cp .env.example .env
+
+# Edit the .env file:
+nano .env
+
+# Make sure these lines are set:
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://theartisticbd.com
+
+# Save and exit (Ctrl+X, then Y, then Enter)
+
+====================================
+STEP 5: CLEAR ALL CACHES
+====================================
+
+# Clear configuration cache:
+php artisan config:clear
+
+# Clear application cache:
+php artisan cache:clear
+
+# Clear route cache:
+php artisan route:clear
+
+# Clear view cache:
+php artisan view:clear
+
+# Optimize application:
+php artisan optimize:clear
+
+====================================
+STEP 6: VERIFY STORAGE IS LINKED
+====================================
+
+# Create symbolic link from public/storage to storage/app/public:
+php artisan storage:link
+
+====================================
+STEP 7: CHECK CURRENT PERMISSIONS
+====================================
+
+# Check storage permissions:
+ls -la storage/
+
+# Check bootstrap/cache permissions:
+ls -la bootstrap/cache/
+
+# Both should show something like: drwxrwxr-x or 775
+
+====================================
+STEP 8: TEST THE FIX
+====================================
+
+Now try to update settings again in your browser:
+https://theartisticbd.com/admin/setting/update
+
+====================================
+STEP 9: IF STILL FORBIDDEN - CHECK LOGS
+====================================
+
+# View Laravel error logs:
+tail -f storage/logs/laravel.log
+
+# Or view the latest log entries:
+tail -n 50 storage/logs/laravel.log
+
+# Check web server error log (location varies):
+tail -f /var/log/apache2/error.log
+# or
+tail -f /var/log/nginx/error.log
+
+====================================
+STEP 10: ADVANCED TROUBLESHOOTING
+====================================
+
+If still forbidden, check demo mode in config:
+
+# View services config:
+cat config/services.php | grep -A 3 "demo"
+
+# It should show:
+# 'demo' => [
+#     'enabled' => false,
+# ],
+
+If it shows 'enabled' => true, edit the file:
+nano config/services.php
+
+Change 'enabled' => true to 'enabled' => false
+Save and exit (Ctrl+X, then Y, then Enter)
+
+Then clear config again:
+php artisan config:clear
+
+====================================
+ALTERNATIVE: USE FILE MANAGER
+====================================
+
+If SSH doesn't work, use your hosting control panel:
+
+1. Login to your hosting control panel (cPanel/Plesk)
+2. Go to File Manager
+3. Navigate to your Laravel root directory
+4. Right-click on 'storage' folder
+5. Select "Change Permissions" or "Properties"
+6. Set to 775 (check: Read, Write, Execute for Owner and Group)
+7. Apply to all subdirectories
+8. Do the same for 'bootstrap/cache'
+9. Check if .env file exists, if not upload it
+10. Use Terminal in control panel to run:
+   php artisan config:clear
+   php artisan cache:clear
+
+====================================
+QUICK COPY-PASTE COMMANDS
+====================================
+
+After connecting via SSH, copy and paste these commands one by one:
+
+# Navigate to project (adjust path if needed)
+cd ~/public_html
+
+# Fix permissions
+chmod -R 775 storage bootstrap/cache
+
+# Clear caches
+php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear && php artisan optimize:clear
+
+# Link storage
+php artisan storage:link
+
+# Check if it worked
+echo "Setup complete! Try updating settings now."
+
+====================================
+NEED HELP?
+====================================
+
+If you encounter any errors, copy the error message and let me know.
+
+Common issues:
+1. "Permission denied" - Contact your hosting provider
+2. "php: command not found" - Try: php81 or /usr/bin/php
+3. "Class not found" - Run: composer install --no-dev
+4. Still forbidden - Check ModSecurity rules with hosting provider
